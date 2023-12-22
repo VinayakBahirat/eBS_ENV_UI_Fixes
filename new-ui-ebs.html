@@ -30,7 +30,6 @@
         }
         .wrapper-flex {
             display: flex;
-            gap: 40px;
         }
         .flex {
             display: flex;
@@ -45,6 +44,9 @@
         .w-25 {
             width: 25%;
         }
+        .w-33 {
+            width: calc(33.33% - 21.3px);
+        }
         .dashboard_records {
             display: flex;
             background-color: #f7faff;
@@ -58,7 +60,7 @@
             min-height: 50px;
             border: 1px solid #d9e3ee;
             width: 100%;
-            padding: 20px;
+            padding: 10px;
             padding-bottom: 10px;
             border-radius: 8px;
         }
@@ -76,9 +78,9 @@
         .dashboard-icons {
             font-size: 26px !important;
             padding: 0px;
-            min-width: 52px;
-            max-width: 52px;
-            height: 52px;
+            min-width: 50px;
+            max-width: 50px;
+            height: 50px;
             color: #0f5e85;
             border-radius: 50%;
             display: flex !important;
@@ -89,8 +91,11 @@
             margin-right: 6px;
         }
         .dashboard-icons img{
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
+        }
+        .gap-2 {
+            gap: 2px;
         }
         .gap-10 {
             gap: 10px;
@@ -156,96 +161,132 @@
         }
         .pie-chat-max-w {
             width:100%;
-            max-width: 60%;
-            margin: 10px auto;
+            max-width: 90%;
+            margin: auto;
         }
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        .specing-top {
+            margin-top:0;
+            padding-top: 0;
+        }
+
+        
+.dashboard-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dashboard-dd-button {
+  display: inline-block;
+  border: 1px solid #d9e3ee;
+  border-radius: 4px;
+  padding: 10px 30px 10px 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dashboard-dd-button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+}
+
+.dashboard-dd-button:hover {
+  background-color: #0174b226;
+}
+
+
+.dashboard-dd-input {
+  display: none;
+}
+
+.dashboard-dd-menu {
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  list-style-type: none;
+}
+
+.dashboard-dd-input + .dashboard-dd-menu {
+  display: none;
+} 
+
+.dashboard-dd-input:checked + .dashboard-dd-menu {
+  display: block;
+} 
+
+.dashboard-dd-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dashboard-dd-menu li:hover {
+  background-color: #f6f6f6;
+}
+
+.dashboard-dd-menu li a {
+  display: block;
+  margin: -10px -20px;
+  padding: 10px 20px;
+}
+
+.dashboard-dd-menu li.divider{
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+}
+.dashboard-dd-label {
+    display:block;
+    margin-block:8px ;
+}
+
     </style>
 </head>
 <body>
-    <div class="wrapper-flex gap-32">
-        <div class="w-50">
-            <div class="title">
-                Design
+    <div>
+        <div>
+            <div class="dashboard-dd-label">
+                <label>Desing: </label>
             </div>
-            <div class="flex gap-16">
-                <div class="w-60 dashboard_records card-box flex gap-10">
-                    <div class="dashboard-icons">
-                        <img class="material-icons " src="img/dashboard-svgrepo-com.svg" alt="dashboard">
-                    </div>
-                    <div>
-                        <h5 class="designName">
-                            Associated ML 
-                        </h5>
-                        <h5 class="designCount">
-                            10
-                        </h5>
-                    </div>
+            <label class="dashboard-dropdown">
+                <div class="dashboard-dd-button">
+                    Business
+                </div>
+              
+                <input type="checkbox" class="dashboard-dd-input" id="test">
+              
+                <ul class="dashboard-dd-menu">
+                  <li>Action</li>
+                  <li>Another action</li>
+                  <li>Something else here</li>
+        
+                </ul>
                 
-                </div>
-                <div class="flex w-40 dashboard_records card-box gap-10">
-                    <div class="dashboard-icons">
-                        <img class="material-icons " src="img/sync-svgrepo-com.svg" alt="sync">
-                    </div>
-                    <div>
-                        <h5 class="designName">
-                            Ready to sync ML
-                        </h5>
-                        <h5 class="designCount">
-                            2
-                        </h5>
-                    </div>
-                </div>
-            </div>
-            <div class="margin-top">
-                <div class="flex gap-16">
-                    <div class="flex card-box card_box_variation_2 justify-between">
-                        <div>
-                            <h5 class="designName designName-font">Queued</h5>
-                            <h5 class="ruleCount" id="fieldCount">100</h5>
-                        </div>
-                        <img src="img/attributes.svg" class="dashboard-icons-image">
-                    </div>
-                    <div class="flex card-box card_box_variation_2 justify-between">
-                        <div>
-                            <h5 class="designName designName-font">In-Progres</h5>
-                            <h5 class="ruleCount" id="fieldCount">1000</h5>
-                        </div>
-                        <img src="img/custom-attributes.svg" class="dashboard-icons-image">
-                    </div>
-                    <div class="flex card-box card_box_variation_2 justify-between">
-                        <div>
-                            <h5 class="designName designName-font">Complete</h5>
-                            <h5 class="ruleCount" id="fieldCount">500</h5>
-                        </div>
-                        <img src="img/business-rules.svg" class="dashboard-icons-image">
-                    </div>
-                    <div class="flex card-box card_box_variation_2 justify-between">
-                        <div>
-                            <h5 class="designName designName-font">Error</h5>
-                            <h5 class="ruleCount" id="fieldCount">20</h5>
-                        </div>
-                        <img src="img/complex-rules.svg" class="dashboard-icons-image">
-                    </div>
-                </div>
-
-            </div>
-            <div class="margin-top-32">
-            </div>
-            <div class="border margin-top-32">
-                <div class=" pie-chat-max-w ">
-                    <h2></h2>
-                    <div>
-                      <canvas id="myChart1"></canvas>
-                    </div>
-                </div>
-            </div>
+              </label>
         </div>
-        <div class="w-50">
+    </div>
+    <div class="wrapper-flex flex-wrap gap-32">
+        <div class="w-33">
             <div class="title">
                 Master List
             </div>
             <div class="flex gap-16">
-                <div class="w-60 dashboard_records card-box flex gap-10">
+                <div class="w-50 dashboard_records card-box flex gap-2">
                     <div class="dashboard-icons">
                         <img class="material-icons " src="img/dashboard-svgrepo-com.svg" alt="dashboard">
                     </div>
@@ -259,7 +300,7 @@
                     </div>
                 
                 </div>
-                <div class="flex w-40 dashboard_records card-box gap-10">
+                <div class="flex w-50 dashboard_records card-box gap-2">
                     <div class="dashboard-icons">
                         <img class="material-icons " src="img/sync-svgrepo-com.svg" alt="sync">
                     </div>
@@ -274,7 +315,7 @@
                 </div>
             </div>
             <div class="margin-top">
-                <div class="flex gap-16">
+                <div class="flex gap-16 margin-top">
                     <div class="flex card-box card_box_variation_2 justify-between">
                         <div>
                             <h5 class="designName designName-font">Queued</h5>
@@ -289,6 +330,8 @@
                         </div>
                         <img src="img/custom-attributes.svg" class="dashboard-icons-image">
                     </div>
+                </div>
+                <div class="flex gap-16 margin-top">
                     <div class="flex card-box card_box_variation_2 justify-between">
                         <div>
                             <h5 class="designName designName-font">Complete</h5>
@@ -306,7 +349,7 @@
                 </div>
 
             </div>
-            <div class="border margin-top-32">
+            <div class="border margin-top">
                 <div class=" pie-chat-max-w ">
                     <h2></h2>
                     <div>
@@ -316,62 +359,343 @@
             </div> 
     
         </div>
+        <div class="w-33">
+            <div class="title">
+                Products Grid
+            </div>
+            <div class="flex gap-16">
+                <div class="w-50 dashboard_records card-box flex gap-2">
+                    <div class="dashboard-icons">
+                        <img class="material-icons " src="img/dashboard-svgrepo-com.svg" alt="dashboard">
+                    </div>
+                    <div>
+                        <h5 class="designName">
+                            Associated ML 
+                        </h5>
+                        <h5 class="designCount">
+                            10
+                        </h5>
+                    </div>
+                
+                </div>
+                <div class="flex w-50 dashboard_records card-box gap-2">
+                    <div class="dashboard-icons">
+                        <img class="material-icons " src="img/sync-svgrepo-com.svg" alt="sync">
+                    </div>
+                    <div>
+                        <h5 class="designName">
+                            Ready to sync ML
+                        </h5>
+                        <h5 class="designCount">
+                            2
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="margin-top">
+                <div class="flex gap-16 margin-top">
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Queued</h5>
+                            <h5 class="ruleCount" id="fieldCount">100</h5>
+                        </div>
+                        <img src="img/attributes.svg" class="dashboard-icons-image">
+                    </div>
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">In-Progres</h5>
+                            <h5 class="ruleCount" id="fieldCount">1000</h5>
+                        </div>
+                        <img src="img/custom-attributes.svg" class="dashboard-icons-image">
+                    </div>
+                </div>
+                <div class="flex gap-16 margin-top">
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Complete</h5>
+                            <h5 class="ruleCount" id="fieldCount">500</h5>
+                        </div>
+                        <img src="img/business-rules.svg" class="dashboard-icons-image">
+                    </div>
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Error</h5>
+                            <h5 class="ruleCount" id="fieldCount">0</h5>
+                        </div>
+                        <img src="img/complex-rules.svg" class="dashboard-icons-image">
+                    </div>
+                </div>
+
+            </div>
+            <div class="border margin-top">
+                <div class=" pie-chat-max-w ">
+                    <h2></h2>
+                    <div>
+                      <canvas id="myChart1"></canvas>
+                    </div>
+                </div>
+            </div> 
+    
+        </div>
+        <div class="w-33">
+            <div class="title">
+                ML Audit Log
+            </div>
+            <div class="flex gap-16">
+                <div class="w-50 dashboard_records card-box flex gap-2">
+                    <div class="dashboard-icons">
+                        <img class="material-icons " src="img/dashboard-svgrepo-com.svg" alt="dashboard">
+                    </div>
+                    <div>
+                        <h5 class="designName">
+                            Associated ML 
+                        </h5>
+                        <h5 class="designCount">
+                            10
+                        </h5>
+                    </div>
+                
+                </div>
+                <div class="flex w-50 dashboard_records card-box gap-2">
+                    <div class="dashboard-icons">
+                        <img class="material-icons " src="img/sync-svgrepo-com.svg" alt="sync">
+                    </div>
+                    <div>
+                        <h5 class="designName">
+                            Ready to sync ML
+                        </h5>
+                        <h5 class="designCount">
+                            2
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="margin-top">
+                <div class="flex gap-16 margin-top">
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Queued</h5>
+                            <h5 class="ruleCount" id="fieldCount">100</h5>
+                        </div>
+                        <img src="img/attributes.svg" class="dashboard-icons-image">
+                    </div>
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">In-Progres</h5>
+                            <h5 class="ruleCount" id="fieldCount">1000</h5>
+                        </div>
+                        <img src="img/custom-attributes.svg" class="dashboard-icons-image">
+                    </div>
+                </div>
+                <div class="flex gap-16 margin-top">
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Complete</h5>
+                            <h5 class="ruleCount" id="fieldCount">500</h5>
+                        </div>
+                        <img src="img/business-rules.svg" class="dashboard-icons-image">
+                    </div>
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Error</h5>
+                            <h5 class="ruleCount" id="fieldCount">0</h5>
+                        </div>
+                        <img src="img/complex-rules.svg" class="dashboard-icons-image">
+                    </div>
+                </div>
+
+            </div>
+            <div class="border margin-top">
+                <div class=" pie-chat-max-w ">
+                    <h2></h2>
+                    <div>
+                      <canvas id="myChartAuditLog"></canvas>
+                    </div>
+                </div>
+            </div> 
+    
+        </div>
+        <div class="w-33">
+            <div class="title specing-top">
+                Impact Analyzer
+            </div>
+            <div class="flex gap-16">
+                <div class="w-50 dashboard_records card-box flex gap-2">
+                    <div class="dashboard-icons">
+                        <img class="material-icons " src="img/dashboard-svgrepo-com.svg" alt="dashboard">
+                    </div>
+                    <div>
+                        <h5 class="designName">
+                            Associated ML 
+                        </h5>
+                        <h5 class="designCount">
+                            10
+                        </h5>
+                    </div>
+                
+                </div>
+                <div class="flex w-50 dashboard_records card-box gap-2">
+                    <div class="dashboard-icons">
+                        <img class="material-icons " src="img/sync-svgrepo-com.svg" alt="sync">
+                    </div>
+                    <div>
+                        <h5 class="designName">
+                            Ready to sync ML
+                        </h5>
+                        <h5 class="designCount">
+                            2
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="margin-top">
+                <div class="flex gap-16 margin-top">
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Queued</h5>
+                            <h5 class="ruleCount" id="fieldCount">100</h5>
+                        </div>
+                        <img src="img/attributes.svg" class="dashboard-icons-image">
+                    </div>
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">In-Progres</h5>
+                            <h5 class="ruleCount" id="fieldCount">1000</h5>
+                        </div>
+                        <img src="img/custom-attributes.svg" class="dashboard-icons-image">
+                    </div>
+                </div>
+                <div class="flex gap-16 margin-top">
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Complete</h5>
+                            <h5 class="ruleCount" id="fieldCount">500</h5>
+                        </div>
+                        <img src="img/business-rules.svg" class="dashboard-icons-image">
+                    </div>
+                    <div class="flex card-box card_box_variation_2 justify-between">
+                        <div>
+                            <h5 class="designName designName-font">Error</h5>
+                            <h5 class="ruleCount" id="fieldCount">0</h5>
+                        </div>
+                        <img src="img/complex-rules.svg" class="dashboard-icons-image">
+                    </div>
+                </div>
+
+            </div>
+            <div class="border margin-top">
+                <div class=" pie-chat-max-w ">
+                    <h2></h2>
+                    <div>
+                      <canvas id="myChartImpactAnalyzer"></canvas>
+                    </div>
+                </div>
+            </div> 
+    
+        </div>
     </div>
 
 
 
-     <script>
+<script>
         let ctx2 = document.getElementById("myChart1").getContext('2d');
-var myChart1 = new Chart(ctx2, {
-  type: 'pie',
-  data: {
-    labels: ["QUEUED", "IN-PROGRES", "COMPLETE", "ERROR"],
-    datasets: [{
-      backgroundColor: [
-        "#ff69b4",
-        "#fada5e",
-        "#3cb371",
-        "#dcdcdc"
-      ],
-      data: [100, 1000, 500, 20]
-    }]
-  },
-  options: {
-        plugins: {
-        legend: {
-            position: 'right',
-            align: "start"
-        }
-        }
-    }
-});
-    </script> 
-    <script>
+        var myChart1 = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ["QUEUED", "IN-PROGRES", "COMPLETE", "ERROR"],
+            datasets: [{
+            backgroundColor: [
+                "#ff69b4",
+                "#fada5e",
+                "#3cb371",
+                "#dcdcdc"
+            ],
+            data: [100, 1000, 500, 20]
+            }]
+        },
+        options: {
+                plugins: {
+                legend: {
+                    position: 'right',
+                    align: "start"
+                }
+                }
+            }
+        });
+ 
         let ctx1 = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx1, {
-  type: 'pie',
-  data: {
-    labels: ["QUEUED", "IN-PROGRES", "COMPLETE", "ERROR"],
-    datasets: [{
-      backgroundColor: [
-        "#ff69b4",
-        "#fada5e",
-        "#3cb371",
-        "#dcdcdc"
-      ],
-      data: [100, 1000, 500, 20]
-    }]
-  },
-  options: {
-        plugins: {
-        legend: {
-            position: 'right',
-            align: "start"
-        }
-        }
-    }
-});
-    </script> 
-
+        var myChart = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ["QUEUED", "IN-PROGRES", "COMPLETE", "ERROR"],
+            datasets: [{
+            backgroundColor: [
+                "#ff69b4",
+                "#fada5e",
+                "#3cb371",
+                "#dcdcdc"
+            ],
+            data: [100, 1000, 500, 20]
+            }]
+        },
+        options: {
+                plugins: {
+                legend: {
+                    position: 'right',
+                    align: "start"
+                }
+                }
+            }
+        });
+   
+        let ctx3 = document.getElementById("myChartAuditLog").getContext('2d');
+        var myChartAuditLog = new Chart(ctx3, {
+        type: 'pie',
+        data: {
+            labels: ["QUEUED", "IN-PROGRES", "COMPLETE", "ERROR"],
+            datasets: [{
+            backgroundColor: [
+                "#ff69b4",
+                "#fada5e",
+                "#3cb371",
+                "#dcdcdc"
+            ],
+            data: [100, 1000, 500, 20]
+            }]
+        },
+        options: {
+                plugins: {
+                legend: {
+                    position: 'right',
+                    align: "start"
+                }
+                }
+            }
+        });
+        let ctx4 = document.getElementById("myChartImpactAnalyzer").getContext('2d');
+        var myChartImpactAnalyzer = new Chart(ctx4, {
+        type: 'pie',
+        data: {
+            labels: ["QUEUED", "IN-PROGRES", "COMPLETE", "ERROR"],
+            datasets: [{
+            backgroundColor: [
+                "#ff69b4",
+                "#fada5e",
+                "#3cb371",
+                "#dcdcdc"
+            ],
+            data: [100, 1000, 500, 20]
+            }]
+        },
+        options: {
+                plugins: {
+                legend: {
+                    position: 'right',
+                    align: "start"
+                }
+                }
+            }
+        });
+</script> 
 </body>
 </html>
